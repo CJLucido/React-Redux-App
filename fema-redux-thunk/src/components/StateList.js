@@ -21,6 +21,7 @@ function StateList(props){
                 )
             }
             {props.error && <p>{props.error.message}</p>}
+            {props.isFetching && <p>Come on now, we don't have that kind of time</p>}
         </div>
 
 

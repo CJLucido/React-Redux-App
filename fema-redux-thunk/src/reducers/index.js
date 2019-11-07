@@ -4,7 +4,7 @@ import {FEMA_LOAD_SUCCESS, FEMA_LOAD_FAILURE,FEMA_LOADING} from "../actions"
 
 
 const initialState = {
-    stateUSA: null, //not sure if this will be an object or array
+    stateUSA: [], //not sure if this will be an object or array. IT IS a 1000 element array of objects with 19 properties. changed from null
     isFetching: false,
     error: null
 }
@@ -21,7 +21,7 @@ export function reducer(state=initialState, action) {
         case FEMA_LOAD_FAILURE:
             return {
                 ...state,
-                stateUSA: null,
+                stateUSA: [],
                 isFetching: false,
                 error: action.payload
             }

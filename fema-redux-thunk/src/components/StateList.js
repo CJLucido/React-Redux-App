@@ -3,11 +3,23 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {fetchStatesUSA} from "../actions"
 
+import StateCard from "./StateCard"
+
 function StateList(props){
     return(
         <div>
             <button type="button" onClick={()=>props.fetchStatesUSA()}>Test Button to see data</button>
-        
+            {
+                props.stateUSA.map(item=> 
+                    <StateCard 
+                    key={item.id} 
+                    stateName={item.state} 
+                    titleDR={item.title}
+                    beganDate={item.declarationDate}
+                    closeDate={item.disasterCloseOutDate}
+                    />
+                )
+            }
         </div>
 
 
@@ -19,3 +31,4 @@ const mapDispatchToProps = {
 }
 
 export default connect(state => state, mapDispatchToProps)(StateList)
+

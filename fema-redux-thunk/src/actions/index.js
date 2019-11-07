@@ -24,7 +24,7 @@ export const femaLoading = () => ({
 
 export const fetchStatesUSA= () => dispatch =>{
     axios
-    .get('https://www.fema.gov/api/open/v1/DisasterDeclarationsSummaries$orderby=state')
+    .get('https://www.fema.gov/api/open/v1/DisasterDeclarationsSummaries?$orderby=state')
     .then(res => console.log(res)
        // dispatch(femaLoadSuccess(res))
     )

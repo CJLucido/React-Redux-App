@@ -20,6 +20,7 @@ function StateList(props){
                     />
                 )
             }
+            {props.error && <p>{props.error.message}</p>}
         </div>
 
 

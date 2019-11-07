@@ -24,14 +24,14 @@ export const femaLoading = () => ({
 
 export const fetchStatesUSA= () => dispatch =>{
     axios
-    .get('https://www.fema.gov/api/open/v1/DisasterDeclarationsSummaries?$orderby=state')
+    .get('https://www.fema.gov/api/open/v1/DisasterDeclarationsSumm')
     .then(res =>
-    
         dispatch(femaLoadSuccess(res.data.DisasterDeclarationsSummaries))
     )
-    .catch(err => 
-        console.log(err)
-    //dispatch(femaLoadFailure(err))
+    .catch(err => {
+        console.log("this is err", err);
+    dispatch(femaLoadFailure(err))}
     )
 }
 
+// https://www.fema.gov/api/open/v1/DisasterDeclarationsSummaries?$orderby=state

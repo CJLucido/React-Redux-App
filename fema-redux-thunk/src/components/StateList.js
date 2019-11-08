@@ -1,23 +1,32 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 import {connect} from 'react-redux'
-import {fetchStatesUSA} from "../actions"
+import {fetchStatesUSA, searchHandle} from "../actions"
 
 import StateCard from "./StateCard"
 
-import { makeStyles } from '@material-ui/core/styles'
+
 import {Grid} from '@material-ui/core'
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        flexGrow: 1,
-        padding: theme.spacing(2)
-    }
-}))
+
+
 
 function StateList(props){
+    const [name, setName] = useState("default")
+
+    const handleNameChange = event => {
+        setName(event.target.value)
+        props.searchHandle(name)
+    }
+
     return(
         <div>
+        <section className="search-form">
+        <form>
+           <label name="search">Search: </label>
+           <input name="search" type="text" placeholder="Search by Symbol" value={name} onChange={handleNameChange}/>
+        </form>
+       </section>
             <button type="button" onClick={()=>props.fetchStatesUSA()}>Test Button to see data</button>
             <Grid
                 container
@@ -34,6 +43,7 @@ function StateList(props){
                     titleDR={item.title}
                     beganDate={item.declarationDate}
                     closeDate={item.disasterCloseOutDate}
+                    paProgramDeclared={item.paProgramDeclared}
                     iaProgramDeclared={item.iaProgramDeclared}
                     hmProgramDeclared={item.hmProgramDeclared}
                     disasterType={item.disasterType}
@@ -53,7 +63,8 @@ function StateList(props){
 }
 
 const mapDispatchToProps = {
-    fetchStatesUSA
+    fetchStatesUSA,
+    searchHandle
 }
 
 export default connect(state => state, mapDispatchToProps)(StateList)

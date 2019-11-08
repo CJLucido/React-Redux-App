@@ -59,11 +59,12 @@ export default function StateCard(props) {
         {props.disasterType + " " + props.disasterNumber}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-        {props.beganDate}
+        Began: {props.beganDate}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-        {props.closeDate}
+        Closed: {props.closeDate}
         </Typography>
+        <Typography className={classes.pos} color="textSecondary">{props.paProgramDeclared ? "PA Support" : "No PA Support"}</Typography>
         <Typography className={classes.pos} color="textSecondary">{props.iaProgramDeclared ? "IA Support" : "No IA Support"}</Typography>
         <Typography className={classes.pos} color="textSecondary">{props.hmProgramDeclared ? "HM Support" : "No HM Support"}</Typography>
 
